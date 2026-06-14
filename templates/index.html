@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Solar Power Generation Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>☀ Solar Power Generation Prediction</h1>
+
+    <p class="desc">
+        Predict AC Power Generation using weather conditions.
+    </p>
+
+    <form action="/predict" method="POST">
+
+        <input
+            type="number"
+            step="any"
+            name="ambient"
+            placeholder="Ambient Temperature"
+            required>
+
+        <input
+            type="number"
+            step="any"
+            name="module"
+            placeholder="Module Temperature"
+            required>
+
+        <input
+            type="number"
+            step="any"
+            name="irradiation"
+            placeholder="Irradiation"
+            required>
+
+        <button type="submit">
+            Predict
+        </button>
+
+    </form>
+
+    {% if prediction %}
+
+    <div class="result">
+
+        <h2>Predicted AC Power</h2>
+
+        <h1>{{ prediction }}</h1>
+
+    </div>
+
+    {% endif %}
+
+    <div class="about">
+
+        <h3>Input Features</h3>
+
+        <ul>
+            <li>Ambient Temperature</li>
+            <li>Module Temperature</li>
+            <li>Irradiation</li>
+        </ul>
+
+    </div>
+
+</div>
+
+</body>
+</html>
