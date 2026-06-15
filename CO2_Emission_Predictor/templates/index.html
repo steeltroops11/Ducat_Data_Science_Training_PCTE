@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2 Emission Predictor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #38bdf8;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #e2e8f0;
+            font-size: 14px;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        input:focus {
+            border-color: #38bdf8;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 24px;
+            padding: 14px;
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #0ea5e9;
+        }
+
+        .result {
+            margin-top: 24px;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            background: #0f172a;
+            border: 1px solid #334155;
+        }
+
+        .result h2 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .result p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .confidence {
+            font-size: 28px;
+            font-weight: 700;
+            color: #38bdf8;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌍 CO2 Emission Predictor</h1>
+        <p class="subtitle">Powered by Random Forest — 98.68% Accuracy</p>
+        <p class="subtitle">Developed by Navish</p>
+        <form action="/predict" method="POST">
+            <div class="grid">
+                <div class="form-group">
+                    <label>Year</label>
+                    <input type="number" name="year" placeholder="2022" required>
+                </div>
+                <div class="form-group">
+                    <label>GDP</label>
+                    <input type="number" name="gdp" placeholder="1300000000000" required>
+                </div>
+                <div class="form-group">
+                    <label>Population</label>
+                    <input type="number" name="population" placeholder="1400000000" required>
+                </div>
+                <div class="form-group">
+                    <label>Energy Per Capita</label>
+                    <input type="number" name="energy_per_capita" placeholder="25000" required>
+                </div>
+                <div class="form-group">
+                    <label>Coal CO2</label>
+                    <input type="number" name="coal_co2" placeholder="1000" required>
+                </div>
+                <div class="form-group">
+                    <label>Oil CO2</label>
+                    <input type="number" name="oil_co2" placeholder="500" required>
+                </div>
+                <div class="form-group">
+                    <label>Gas CO2</label>
+                    <input type="number" name="gas_co2" placeholder="300" required>
+                </div>
+                <div class="form-group">
+                    <label>Methane</label>
+                    <input type="number" name="methane" placeholder="200" required>
+                </div>
+                <div class="form-group" style="grid-column: span 2;">
+                    <label>Primary Energy Consumption</label>
+                    <input type="number" name="primary_energy_consumption" placeholder="5000" required>
+                </div>
+            </div>
+
+            <button type="submit">🔍 Predict Emission Level</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h2>{{ prediction }}</h2>
+            <p>Model Confidence</p>
+            <div class="confidence">{{ confidence }}%</div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
