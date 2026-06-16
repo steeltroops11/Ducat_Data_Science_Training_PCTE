@@ -8,8 +8,6 @@ app = Flask(__name__)
 with open('rf_model.pkl', 'rb') as f:
     model = pickle.load(f)
 
-with open('scaler.pkl', 'rb') as f:
-    scaler = pickle.load(f)
 
 @app.route('/')
 def home():
@@ -33,11 +31,11 @@ def predict():
 
         # Scale karo
         features_array = np.array(features).reshape(1, -1)
-        features_scaled = scaler.transform(features_array)
+        
 
         # Predict karo
-        prediction = model.predict(features_scaled)[0]
-        probability = model.predict_proba(features_scaled)[0]
+        prediction = model.predict(features_array)[0]
+        probability = model.predict_proba(features_array)[0]
 
         result = "🔴 High Emitter" if prediction == 1 else "🟢 Low Emitter"
         confidence = round(max(probability) * 100, 2)
@@ -51,4 +49,4 @@ def predict():
                              confidence=0)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)
