@@ -139,6 +139,12 @@ streamlit run app.py
 
 ---
 
+Run Streamlit application live:
+
+```web
+https://pulsar-detection-002.streamlit.app/
+```
+
 ## 📦 Requirements
 
 ```text
