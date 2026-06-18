@@ -155,11 +155,16 @@ joblib
 
 ### Home Page
 
-(Add screenshot here)
+C:\Users\hp\OneDrive\Desktop\co2_project\Ducat_Data_Science_Training_PCTE\Pulsar_Detection\screenshots\home.png
+
+C:\Users\hp\OneDrive\Desktop\co2_project\Ducat_Data_Science_Training_PCTE\Pulsar_Detection\screenshots\about.png
+
 
 ### Prediction Result
+C:\Users\hp\OneDrive\Desktop\co2_project\Ducat_Data_Science_Training_PCTE\Pulsar_Detection\screenshots\input.png
 
-(Add screenshot here)
+C:\Users\hp\OneDrive\Desktop\co2_project\Ducat_Data_Science_Training_PCTE\Pulsar_Detection\screenshots\result.png
+
 
 ---
 
