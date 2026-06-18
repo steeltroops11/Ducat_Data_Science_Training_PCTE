@@ -16,11 +16,23 @@ st.set_page_config(
 # ====================================
 # LOAD MODEL
 # ====================================
+from pathlib import Path
+import joblib
+import streamlit as st
 
 @st.cache_resource
 def load_model():
-    model = joblib.load("logistic_model.pkl")
-    scaler = joblib.load("scaler.pkl")
+
+    BASE_DIR = Path(__file__).parent
+
+    st.write("Current Directory:", BASE_DIR)
+
+    st.write("Files Available:")
+    st.write(list(BASE_DIR.iterdir()))
+
+    model = joblib.load(BASE_DIR / "logistic_model.pkl")
+    scaler = joblib.load(BASE_DIR / "scaler.pkl")
+
     return model, scaler
 
 model, scaler = load_model()
