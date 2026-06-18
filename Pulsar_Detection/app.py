@@ -24,12 +24,6 @@ import streamlit as st
 def load_model():
 
     BASE_DIR = Path(__file__).parent
-
-    st.write("Current Directory:", BASE_DIR)
-
-    st.write("Files Available:")
-    st.write(list(BASE_DIR.iterdir()))
-
     model = joblib.load(BASE_DIR / "logistic_model.pkl")
     scaler = joblib.load(BASE_DIR / "scaler.pkl")
 
