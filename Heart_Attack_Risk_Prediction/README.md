@@ -29,6 +29,9 @@ The dataset contains 8,763 patient records with demographic, lifestyle, and clin
 pip install -r requirements.txt
 streamlit run app.py
 ```
+
+live demo::: https://hear-attack-risk-prediction.streamlit.app/
+
 Make sure `app.py`, `dt_model.pkl`, and `label_encoder.pkl` are all in the same directory.
 
 ## Notes
