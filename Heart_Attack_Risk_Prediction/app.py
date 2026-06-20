@@ -1,8 +1,14 @@
 import streamlit as st
 import pandas as pd
 import pickle
+from pathlib import Path
 
 st.set_page_config(page_title="Heart Attack Risk Predictor", page_icon="🫀", layout="centered")
+
+# Build paths relative to THIS script's folder, not the working directory.
+# This matters because on Streamlit Community Cloud the working directory
+# is always the repo root, even if app.py lives in a subfolder.
+BASE_DIR = Path(__file__).resolve().parent
 
 # -------------------------------------------------------
 # Load the already-trained model and encoder (saved from
@@ -10,9 +16,9 @@ st.set_page_config(page_title="Heart Attack Risk Predictor", page_icon="🫀", l
 # -------------------------------------------------------
 @st.cache_resource
 def load_model():
-    with open("dt_model.pkl", "rb") as f:
+    with open(BASE_DIR / "dt_model.pkl", "rb") as f:
         model = pickle.load(f)
-    with open("label_encoder.pkl", "rb") as f:
+    with open(BASE_DIR / "label_encoder.pkl", "rb") as f:
         le = pickle.load(f)
     return model, le
 
